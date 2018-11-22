@@ -29,7 +29,7 @@ public class GameSnake extends JFrame {
     static final int KEY_UP = 38;               //   of
     static final int KEY_RIGHT = 39;            //   cursor
     static final int KEY_DOWN = 40;             //   keys
-    final int SNAKE_DELAY = 150;                // snake delay in milliseconds
+    private int SNAKE_DELAY = 150;                // snake delay in milliseconds
     boolean gameOver = false;                   // a sign game is over or not
     boolean isMoveMade = false;                  // snake made a move and ready to turn
     private LinkedList<Integer> commands;                //queue commands
@@ -97,6 +97,7 @@ public class GameSnake extends JFrame {
             snake.move();            // snake move
             if (food.isEaten()) {    // if the snake ate the food
                 food.appear();       //   create food and set in new place
+                setSpeed(-2);
             //    poison.add();        //   add new poison point
             }
             canvas.repaint();        // repaint panel/window
@@ -160,5 +161,7 @@ public class GameSnake extends JFrame {
         }
         return s;
     }
-
+    public void setSpeed(int speedChange){
+        this.SNAKE_DELAY += speedChange;
+    }
 }
